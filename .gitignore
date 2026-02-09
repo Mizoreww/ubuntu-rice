@@ -1,0 +1,4 @@
+configs/custom/
+*.tar.gz
+*.bak
+.DS_Store
