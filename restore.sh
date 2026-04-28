@@ -28,8 +28,8 @@ print_banner "ubuntu-rice restore"
 # ── Build checklist of available backups ─────────────────────────────────
 checklist_items=()
 
-if [ -f "$BACKUP_DIR/kitty.conf" ]; then
-    checklist_items+=("kitty" "Kitty terminal configuration" "ON")
+if [ -f "$BACKUP_DIR/ghostty/config" ]; then
+    checklist_items+=("ghostty" "Ghostty terminal configuration" "ON")
 fi
 
 if [ -f "$BACKUP_DIR/zshrc" ]; then
@@ -64,11 +64,10 @@ fi
 
 for component in $selected; do
     case "$component" in
-        kitty)
-            mkdir -p ~/.config/kitty
-            cp "$BACKUP_DIR/kitty.conf" ~/.config/kitty/
-            cp "$BACKUP_DIR/current-theme.conf" ~/.config/kitty/ 2>/dev/null || true
-            log_success "Kitty config restored"
+        ghostty)
+            mkdir -p ~/.config/ghostty
+            cp "$BACKUP_DIR/ghostty/config" ~/.config/ghostty/
+            log_success "Ghostty config restored"
             ;;
         zsh)
             if [ -f "$BACKUP_DIR/zshrc" ]; then

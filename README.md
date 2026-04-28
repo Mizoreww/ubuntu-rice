@@ -17,7 +17,7 @@ One-click Ubuntu GNOME desktop beautification toolkit.
 
 | Component | Description | 20.04 | 22.04 | 24.04 |
 |-----------|-------------|:-----:|:-----:|:-----:|
-| Kitty | GPU-accelerated terminal emulator | yes | yes | yes |
+| Ghostty | Modern GPU-accelerated terminal (Mitchell Hashimoto) | no | yes | yes |
 | Nerd Fonts | MesloLGS NF font family | yes | yes | yes |
 | Zsh | Oh-My-Zsh + Powerlevel10k + plugins | yes | yes | yes |
 | Fcitx5 | Chinese input method (pinyin) | PPA | yes | yes |
@@ -50,7 +50,7 @@ ubuntu-rice/
 │   ├── distro.sh       # Ubuntu/GNOME version detection
 │   └── tui.sh          # Whiptail TUI wrappers
 ├── modules/
-│   ├── kitty.sh        # Kitty terminal
+│   ├── ghostty.sh      # Ghostty terminal
 │   ├── fonts.sh        # Nerd Fonts
 │   ├── zsh.sh          # Zsh + Oh-My-Zsh + p10k
 │   ├── fcitx5.sh       # Fcitx5 input method
@@ -59,7 +59,7 @@ ubuntu-rice/
 │   └── gnome-settings.sh   # Desktop appearance settings
 └── configs/
     ├── default/        # Default configs shipped with the project
-    │   ├── kitty/
+    │   ├── ghostty/
     │   ├── zsh/
     │   ├── fcitx5/
     │   ├── gnome_settings/
@@ -74,7 +74,7 @@ automatically prefers `configs/custom/<module>/` over `configs/default/<module>/
 
 ```
 configs/custom/
-├── kitty/kitty.conf
+├── ghostty/config
 ├── zsh/zshrc
 ├── fcitx5/classicui.conf
 └── gnome/interface.dconf
@@ -93,7 +93,7 @@ configs/custom/
 ./restore.sh ~/ubuntu-rice-backup-20260209_120000.tar.gz
 ```
 
-The backup script saves Kitty, Zsh, Fcitx5, and GNOME settings into a
+The backup script saves Ghostty, Zsh, Fcitx5, and GNOME settings into a
 timestamped `.tar.gz` archive.
 
 ## Uninstall

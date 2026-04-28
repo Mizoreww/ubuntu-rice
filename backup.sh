@@ -17,8 +17,8 @@ print_banner "ubuntu-rice backup"
 # ── Build checklist of available configs ─────────────────────────────────
 checklist_items=()
 
-if [ -d ~/.config/kitty ]; then
-    checklist_items+=("kitty" "Kitty terminal configuration" "ON")
+if [ -d ~/.config/ghostty ]; then
+    checklist_items+=("ghostty" "Ghostty terminal configuration" "ON")
 fi
 
 if [ -f ~/.zshrc ]; then
@@ -55,10 +55,10 @@ mkdir -p "$BACKUP_DIR"
 
 for component in $selected; do
     case "$component" in
-        kitty)
-            cp ~/.config/kitty/kitty.conf "$BACKUP_DIR/" 2>/dev/null || true
-            cp ~/.config/kitty/current-theme.conf "$BACKUP_DIR/" 2>/dev/null || true
-            log_success "Kitty config backed up"
+        ghostty)
+            mkdir -p "$BACKUP_DIR/ghostty"
+            cp ~/.config/ghostty/config "$BACKUP_DIR/ghostty/" 2>/dev/null || true
+            log_success "Ghostty config backed up"
             ;;
         zsh)
             if [ -f ~/.zshrc ]; then
@@ -103,7 +103,7 @@ fcitx5-material-color
 fcitx5-config-qt
 
 # Manually installed
-# Kitty: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+# Ghostty: sudo add-apt-repository ppa:mkasberg/ghostty && sudo apt install ghostty
 # Oh-My-Zsh: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # Powerlevel10k: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 # zsh-autosuggestions: git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions

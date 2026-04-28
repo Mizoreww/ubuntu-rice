@@ -48,7 +48,7 @@ if [[ -d "${PROJECT_DIR}/modules" ]]; then
     for mod_file in "${PROJECT_DIR}"/modules/*.sh; do
         [[ -f "$mod_file" ]] || continue
 
-        # Extract module ID from filename: kitty.sh -> kitty
+        # Extract module ID from filename: ghostty.sh -> ghostty
         # Convert hyphens to underscores (bash functions cannot contain hyphens)
         mod_id="$(basename "$mod_file" .sh)"
         mod_id="${mod_id//-/_}"

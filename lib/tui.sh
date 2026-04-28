@@ -64,7 +64,7 @@ tui_checklist() {
 # Display a result summary after installation / uninstallation.
 #
 # Usage:
-#   results=("kitty:ok" "zsh:ok" "fonts:fail")
+#   results=("ghostty:ok" "zsh:ok" "fonts:fail")
 #   tui_show_result "${results[@]}"
 tui_show_result() {
     local results=("$@")
