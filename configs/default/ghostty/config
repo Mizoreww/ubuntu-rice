@@ -1,23 +1,22 @@
-# ubuntu-rice default Ghostty configuration
-# Theme: TokyoNight Moon
-# Docs: https://ghostty.org/docs/config/reference
-# Show effective config: ghostty +show-config --default=false
+# Ghostty 配置（从 kitty 迁移）
+# 文档：https://ghostty.org/docs/config/reference
+# 查看当前生效配置：ghostty +show-config --default=false
 
-# ===== Font =====
+# ===== 字体 =====
 font-family = MesloLGS NF
 font-size = 14
 
-# ===== Theme (TokyoNight Moon is a built-in ghostty theme) =====
-# List available themes: ghostty +list-themes
+# ===== 主题（Tokyo Night Moon 是 ghostty 内置主题）=====
+# 列出所有内置主题：ghostty +list-themes
 theme = TokyoNight Moon
 
-# ===== Background opacity =====
-# GNOME compositor does not honor background blur; KDE/macOS users may
-# uncomment background-blur-radius below.
+# ===== 背景透明度 =====
+# 注意：GNOME compositor 不支持背景模糊（kitty 里那条 background_blur 也无效），
+# KDE/macOS 下可解开下面的 background-blur-radius。
 background-opacity = 0.88
 # background-blur-radius = 20
 
-# ===== Window =====
+# ===== 窗口 =====
 window-width = 140
 window-height = 40
 window-save-state = always
@@ -27,27 +26,35 @@ window-padding-balance = true
 confirm-close-surface = false
 window-decoration = true
 
-# ===== Cursor =====
-cursor-style = bar
+# ===== 光标 =====
+cursor-style = block
 cursor-style-blink = true
 
-# ===== Scrolling / Mouse =====
+# ===== 滚动 / 鼠标 =====
 scrollback-limit = 10000
 mouse-hide-while-typing = true
 copy-on-select = false
 
-# ===== Bell =====
-# ghostty 1.3.x does not expose audio/visual bell configuration
+# ===== 响铃 =====
+# ghostty 1.3.1 不暴露 bell 相关配置，音频/视觉响铃在此版本无配置接口
 
-# ===== Copy / paste =====
+# ===== 复制粘贴（与 kitty 一致）=====
 keybind = ctrl+shift+c=copy_to_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
 
-# ===== Font size hotkeys =====
+# ===== 字号热键 =====
 keybind = ctrl+shift+equal=increase_font_size:1
 keybind = ctrl+shift+minus=decrease_font_size:1
 keybind = ctrl+shift+zero=reset_font_size
 
-# ===== New tab / window =====
+# ===== 新标签 / 新窗口 =====
 keybind = ctrl+shift+t=new_tab
 keybind = ctrl+shift+n=new_window
+
+# ===== 已知会丢失（kitty 独有功能，ghostty 暂无对应）=====
+# - dynamic_background_opacity（运行时调透明度）
+# - tab_bar_style powerline / slanted / tab_fade（ghostty 用 GTK 原生 tab）
+# - enabled_layouts（splits 是手动触发，无布局轮换）
+# - cursor_trail（光标拖尾）
+# - visual_bell_duration（视觉响铃自定义）
+# - allow_remote_control / listen_on（无等价 IPC）

@@ -55,8 +55,13 @@ fcitx5_apply_config() {
     log_info "Applying Fcitx5 configuration..."
     mkdir -p ~/.config/fcitx5/conf
 
-    cp "$config_src"/classicui.conf ~/.config/fcitx5/conf/ 2>/dev/null || true
-    cp "$config_src"/pinyin.conf ~/.config/fcitx5/conf/ 2>/dev/null || true
+    # Copy every *.conf shipped with the module — covers classicui, pinyin,
+    # chttrans, notifications, punctuation, and any future additions.
+    for f in "$config_src"/*.conf; do
+        [ -f "$f" ] || continue
+        cp "$f" ~/.config/fcitx5/conf/
+        log_info "  + $(basename "$f")"
+    done
 
     # Restart fcitx5 if running
     if pidof fcitx5 >/dev/null 2>&1; then

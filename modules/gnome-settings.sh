@@ -54,5 +54,24 @@ gnome_settings_apply_config() {
         dconf load /org/gnome/desktop/wm/preferences/ < "$config_src/gnome-wm.dconf"
     fi
 
+    # Wallpaper — copy any image shipped under configs/<scope>/wallpaper/
+    # to ~/Pictures/ and point GNOME at the first one.
+    local wp_src="${PROJECT_DIR}/configs/default/wallpaper"
+    if [ -d "${PROJECT_DIR}/configs/custom/wallpaper" ]; then
+        wp_src="${PROJECT_DIR}/configs/custom/wallpaper"
+    fi
+    if [ -d "$wp_src" ]; then
+        local wp_file
+        wp_file="$(find "$wp_src" -maxdepth 1 -type f \( -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' -o -name '*.webp' \) | head -1)"
+        if [ -n "$wp_file" ]; then
+            mkdir -p ~/Pictures
+            cp "$wp_file" ~/Pictures/
+            local wp_dest="${HOME}/Pictures/$(basename "$wp_file")"
+            log_info "Setting wallpaper: $wp_dest"
+            gsettings set org.gnome.desktop.background picture-uri "file://${wp_dest}"
+            gsettings set org.gnome.desktop.background picture-uri-dark "file://${wp_dest}"
+        fi
+    fi
+
     log_success "GNOME desktop settings applied"
 }

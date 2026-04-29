@@ -1,7 +1,8 @@
 [/]
-icon-theme='Tela-blue'
-cursor-theme='Bibata-Modern-Ice'
+color-scheme='default'
 cursor-size=48
-text-scaling-factor=1.25
-font-name='Ubuntu Sans 11'
-monospace-font-name='Ubuntu Sans Mono 13'
+cursor-theme='Bibata-Modern-Ice'
+enable-animations=true
+gtk-theme='Yaru'
+icon-theme='Tela-blue'
+text-scaling-factor=1.2500000000000002
