@@ -37,8 +37,10 @@ if [[ -d "${PROJECT_DIR}/modules" ]]; then
         source "$mod_file"
         MODULE_IDS+=("$mod_id")
 
-        local name_var="${mod_id}_name"
-        local desc_var="${mod_id}_desc"
+        # NOTE: do not use `local` here — this loop runs in the script body,
+        # not inside a function, so `local` would error under `set -e`.
+        name_var="${mod_id}_name"
+        desc_var="${mod_id}_desc"
         MODULE_NAMES["$mod_id"]="${!name_var:-$mod_id}"
         MODULE_DESCS["$mod_id"]="${!desc_var:-}"
 
